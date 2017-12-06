@@ -14,19 +14,18 @@ RUN     buildDeps="curl unzip" && \
         mv /tmp/caddy/caddy /usr/bin/ && \
         chmod +x /usr/bin/caddy && \
         rm -rf /tmp/caddy && \
-        apk del --purge $buildDeps && \
-        echo "http://${DOMAIN}:443 {" > /etc/Caddyfile && \
-        echo "gzip" >> /etc/Caddyfile && \
-        echo "tls $EMAIL" >> /etc/Caddyfile && \
-        echo "log /dev/stderr" >> /etc/Caddyfile  && \
-        echo "forwardproxy" >> /etc/Caddyfile && \ 
-        echo "}" >> /etc/Caddyfile
+        apk del --purge $buildDeps
+   #     echo "http://${DOMAIN}:443 {" > /etc/Caddyfile && \
+  #      echo "gzip" >> /etc/Caddyfile && \
+ #       echo "tls $EMAIL" >> /etc/Caddyfile && \
+ #       echo "log /dev/stderr" >> /etc/Caddyfile  && \
+#        echo "forwardproxy" >> /etc/Caddyfile && \ 
+#        echo "}" >> /etc/Caddyfile
         
 VOLUME  /etc/certs
 VOLUME  /root/.caddy
-WORKDIR /
 
-#ADD     CaddyFile       /etc/Caddyfile
+ADD     CaddyFile       /etc/Caddyfile
 
 EXPOSE  443
 
