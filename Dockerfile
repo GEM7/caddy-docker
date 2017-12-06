@@ -16,6 +16,7 @@ RUN     buildDeps="curl unzip" && \
         apk del --purge $buildDeps
         
 VOLUME  /etc/certs
+VOLUME  /root/.caddy
 
 ADD     CaddyFile       /etc/Caddyfile
 
