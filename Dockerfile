@@ -21,4 +21,5 @@ ADD     CaddyFile       /etc/Caddyfile
 
 EXPOSE  443
 
-CMD     ["caddy", "--conf /etc/Caddyfile"]
+ENTRYPOINT      ["/usr/bin/caddy"]
+CMD     ["--conf", "/etc/Caddyfile"]
