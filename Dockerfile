@@ -19,7 +19,8 @@ RUN     buildDeps="curl unzip" && \
         echo "gzip" >> /etc/Caddyfile && \
         echo "tls $EMAIL" >> /etc/Caddyfile && \
         echo "log /dev/stderr" >> /etc/Caddyfile  && \
-        echo "forwardproxy }" >> /etc/Caddyfile
+        echo "forwardproxy" >> /etc/Caddyfile && \ 
+        echo "}" >> /etc/Caddyfile
         
 VOLUME  /etc/certs
 VOLUME  /root/.caddy
