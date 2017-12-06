@@ -1,6 +1,7 @@
 FROM    alpine:latest
 
 ENV     DOMAIN  YOUR_DOMAIN
+ENV     EMAIL   YOUR_EMAIL_ADDRESS
 ENV     CERT_DIR /etc/certs
 
 RUN     buildDeps="curl unzip" && \
