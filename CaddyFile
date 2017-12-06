@@ -1,0 +1,5 @@
+http://${DOMAIN}:443 {
+gzip
+log access.log
+forwardproxy
+}
