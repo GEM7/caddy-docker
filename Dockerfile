@@ -1,10 +1,12 @@
 FROM    alpine:latest
 
-ENV     DOMAIN  ""
+ENV     DOMAIN  YOUR_DOMAIN
+ENV     CERT_DIR /etc/certs
 
 RUN     buildDeps="curl unzip" && \
         set -x &&\
         mkdir -p /tmp/caddy && \
+        mkdir -p $CERT_DIR && \
         apk add --no-cache curl unzip && \
         curl -sl -o /tmp/caddy/caddy_linux_amd64.tar.gz "https://caddyserver.com/download/linux/amd64?plugins=http.forwardproxy&license=personal" && \
         tar -zxf /tmp/caddy/caddy_linux_amd64.tar.gz -C /tmp/caddy && \
@@ -12,9 +14,11 @@ RUN     buildDeps="curl unzip" && \
         chmod +x /usr/bin/caddy && \
         rm -rf /tmp/caddy && \
         apk del --purge $buildDeps
+        
+VOLUME  /etc/certs
 
 ADD     CaddyFile       /etc/Caddyfile
-ADD     entrypoint.sh   /usr/local/bin
 
 EXPOSE  443
-ENTRYPOINT      ["entrypoint.sh"]
+
+CMD     ["caddy", "--conf /etc/Caddyfile"]
