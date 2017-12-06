@@ -1,6 +1,7 @@
 http://{{DOMAIN}}:443 {
 gzip
 log /dev/stdout
+error /dev/stdout
 tls {{EMAIL}}
 forwardproxy
 }
