@@ -1,5 +1,7 @@
-http://${DOMAIN}:443 {
+http://{{DOMAIN}}:443 {
 gzip
-log access.log
+log /dev/stdout
+tls {{CERT_DIR}}/domain.com.crt {{CERT_DIR}}domain.com.key
 forwardproxy
 }
+
