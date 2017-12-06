@@ -1,7 +1,7 @@
 http://{{DOMAIN}}:443 {
 gzip
 log /dev/stdout
-tls {{CERT_DIR}}/{{DOMAIN}}.crt {{CERT_DIR}}/{{DOMAIN}}.key
+tls {{EMAIL}}
 forwardproxy
 }
 
