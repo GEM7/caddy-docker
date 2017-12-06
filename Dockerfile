@@ -24,7 +24,7 @@ RUN     buildDeps="curl unzip" && \
         
 VOLUME  /etc/certs
 VOLUME  /root/.caddy
-WORKDIR /srv
+WORKDIR /
 
 #ADD     CaddyFile       /etc/Caddyfile
 
