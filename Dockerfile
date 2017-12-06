@@ -15,11 +15,11 @@ RUN     buildDeps="curl unzip" && \
         chmod +x /usr/bin/caddy && \
         rm -rf /tmp/caddy && \
         apk del --purge $buildDeps && \
-        echo 'http://${DOMAIN}:443 {' >> /etc/Caddyfile && \
+        echo 'http://${DOMAIN}:443 {' > /etc/Caddyfile && \
         echo 'gzip' >> /etc/Caddyfile && \
         echo 'tls $EMAIL' >> /etc/Caddyfile && \
         echo 'log /dev/stderr' >> /etc/Caddyfile  && \
-        echo 'forwardproxy' >> /etc/Caddyfile
+        echo 'forwardproxy}' >> /etc/Caddyfile
         
 VOLUME  /etc/certs
 VOLUME  /root/.caddy
