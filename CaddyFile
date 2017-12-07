@@ -1,8 +1,7 @@
-http://{{DOMAIN}}:443 {
+h.menhaowan.com:443 {
+root /srv/caddy
 gzip
-log /dev/stdout
-error /dev/stdout
-tls {{EMAIL}}
+log access.log
+tls /srv/certs/h.menhaowan.com.crt /srv/certs/h.menhaowan.com.key
 forwardproxy
 }
-
