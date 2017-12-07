@@ -1,7 +1,7 @@
-h.menhaowan.com:443 {
+域名:443 {
 root /srv/caddy
 gzip
 log access.log
-tls /srv/certs/h.menhaowan.com.crt /srv/certs/h.menhaowan.com.key
+tls /srv/certs/域名.crt /srv/certs/域名.key
 forwardproxy
 }
