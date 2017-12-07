@@ -25,9 +25,9 @@ RUN     buildDeps="curl unzip" && \
 VOLUME  /etc/certs
 VOLUME  /root/.caddy
 
-ADD     CaddyFile       /etc/Caddyfile
+ADD     CaddyFile       /etc/CaddyFile
 
 EXPOSE  443
 
 ENTRYPOINT      ["/usr/bin/caddy"]
-CMD     ["--conf", "/etc/Caddyfile"]
+CMD     ["-conf", "/etc/Caddyfile"]
