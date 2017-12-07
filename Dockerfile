@@ -1,7 +1,6 @@
 FROM    alpine:latest
 
 ENV     DOMAIN  YOUR_DOMAIN
-ENV     EMAIL   YOUR_EMAIL_ADDRESS
 ENV     CERT_DIR /srv/certs
 
 RUN     buildDeps="curl unzip" && \
@@ -16,12 +15,6 @@ RUN     buildDeps="curl unzip" && \
         chmod +x /usr/bin/caddy && \
         rm -rf /tmp/caddy && \
         apk del --purge $buildDeps
-   #     echo "http://${DOMAIN}:443 {" > /etc/Caddyfile && \
-  #      echo "gzip" >> /etc/Caddyfile && \
- #       echo "tls $EMAIL" >> /etc/Caddyfile && \
- #       echo "log /dev/stderr" >> /etc/Caddyfile  && \
-#        echo "forwardproxy" >> /etc/Caddyfile && \ 
-#        echo "}" >> /etc/Caddyfile
         
 VOLUME  /srv/certs
 VOLUME  /root/.caddy
