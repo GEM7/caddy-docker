@@ -25,7 +25,7 @@ RUN     buildDeps="curl unzip" && \
 VOLUME  /srv/docker/certs
 VOLUME	/srv/docker/caddy
 
-ADD	Caddyfile	/etc/CaddyFile
+ADD	CaddyFile	/etc/CaddyFile
 ADD	index.html	$WEB_DIR/index.html
 
 EXPOSE  443
