@@ -6,8 +6,8 @@ ENV     DOMAIN		""
 ENV     CERT_DIR	/srv/docker/certs
 ENV	WEB_DIR		/srv/docker/caddy
 ENV	FILE_PATH	/share
-ENV	AUTH_USER	""
-ENV	AUTH_PATH	""	
+ENV	AUTH_USER	Admin
+ENV	AUTH_PATH	Administrator	
 
 RUN     buildDeps="curl unzip" && \
         set -x &&\
