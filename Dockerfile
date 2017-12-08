@@ -2,9 +2,12 @@ FROM    alpine:latest
 
 MAINTAINER	Adam	github.com/GEM7
 
-ENV     DOMAIN	""	
+ENV     DOMAIN		""	
 ENV     CERT_DIR	/srv/docker/certs
 ENV	WEB_DIR		/srv/docker/caddy
+ENV	FILES		/srv/docker/caddy
+ENV	AUTH_USER	""
+ENV	AUTH_PATH	""	
 
 RUN     buildDeps="curl unzip" && \
         set -x &&\
@@ -27,7 +30,10 @@ ADD	index.html	$WEB_DIR/index.html
 
 EXPOSE  443
 
-ENTRYPOINT	sed -i "s#DOMAIN#$DOMAIN#g" /etc/CaddyFile && \
-		sed -i "s#CERT_DIR#$CERT_DIR#g" /etc/CaddyFile && \
+ENTRYPOINT	sed -i "s|WEB_DIR|$WEBDIR|g"		/etc/CaddyFile	&&\
+		sed -i "s|DOMAIN|$DOMAIN|g"		/etc/CaddyFile	&&\
+		sed -i "s|CERT_DIR|$CERT_DIR|g"		/etc/CaddyFile	&&\
+		sed -i "s|AUTH_USER|$AUTH_USER|g"	/etc/CaddyFile	&&\
+		sed -i "s|AUTH_PASS|$AUTH_PASS|g"	/etc/CaddyFile	&&\
 		/usr/bin/caddy -conf /etc/CaddyFile
 #CMD     ["-conf", "/etc/CaddyFile"]
