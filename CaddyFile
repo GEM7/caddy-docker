@@ -1,7 +1,9 @@
 DOMAIN:443 {
 root /srv/docker/caddy
 gzip
-log access.log
+log stdout
 tls CERT_DIR/DOMAIN.crt CERT_DIR/DOMAIN.key
 forwardproxy
+filemanager /FILES
+basicauth /FILES AUTH_USER AUTH_PASS
 }
