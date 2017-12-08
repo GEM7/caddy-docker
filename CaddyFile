@@ -1,7 +1,7 @@
-域名:443 {
-root /srv/caddy
+DOMAIN:443 {
+root /srv/docker/caddy
 gzip
 log access.log
-tls /srv/certs/域名.crt /srv/certs/域名.key
+tls CERT_DIR/DOMAIN.crt CERT_DIR/DOMAIN.key
 forwardproxy
 }

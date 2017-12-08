@@ -1,12 +1,16 @@
 FROM    alpine:latest
 
-ENV     DOMAIN  YOUR_DOMAIN
-ENV     CERT_DIR /srv/certs
+ENV     DOMAIN	""	
+ENV     CERT_DIR	/srv/docker/certs
+ENV	WEB_DIR		/srv/docker/caddy
+
+ADD	CaddyFile	/etc/CaddyFile
+
 
 RUN     buildDeps="curl unzip" && \
         set -x &&\
         mkdir -p /tmp/caddy && \
-	mkdir -p /srv/caddy && \
+	mkdir -p $WEB_DIR && \
         mkdir -p $CERT_DIR && \
         apk add --no-cache curl unzip ca-certificates && \
         curl -sl -o /tmp/caddy/caddy_linux_amd64.tar.gz "https://caddyserver.com/download/linux/amd64?plugins=http.forwardproxy&license=personal" && \
@@ -16,13 +20,14 @@ RUN     buildDeps="curl unzip" && \
         rm -rf /tmp/caddy && \
         apk del --purge $buildDeps
         
-VOLUME  /srv/certs
-VOLUME  /root/.caddy
+VOLUME  /srv/docker/certs
+VOLUME	/srv/docker/caddy
 
-ADD	index.html	/srv/caddy/index.html
-ADD	CaddyFile       /etc/CaddyFile
+ADD	index.html	$WEB_DIR/index.html
 
 EXPOSE  443
 
-ENTRYPOINT      ["/usr/bin/caddy"]
+ENTRYPOINT	sed -i 's#DOMAIN#$DOMAIN#g' /etc/CaddyFile && \
+		sed -i 's#CERT_DIR#$CERT_DIR#g' /etc/CaddyFile && \
+		/usr/bin/caddy
 CMD     ["-conf", "/etc/CaddyFile"]
