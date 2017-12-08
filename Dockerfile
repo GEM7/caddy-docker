@@ -1,5 +1,7 @@
 FROM    alpine:latest
 
+MAINTAINER	Adam	github.com/GEM7
+
 ENV     DOMAIN	""	
 ENV     CERT_DIR	/srv/docker/certs
 ENV	WEB_DIR		/srv/docker/caddy
