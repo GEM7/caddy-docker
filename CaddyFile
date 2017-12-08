@@ -3,7 +3,12 @@ root WEB_DIR
 gzip
 log stdout
 tls CERT_DIR/DOMAIN.crt CERT_DIR/DOMAIN.key
-forwardproxy
+forwardproxy {
+probe_resistance	localhost
+basicauth yataomei	naihemeise
+    response_timeout 30
+    dial_timeout     30
+}
 filemanager FILE_PATH WEB_DIRFILE_PATH {
 	no_auth
 	AUTH_USER:
