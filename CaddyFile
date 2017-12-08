@@ -4,6 +4,13 @@ gzip
 log stdout
 tls CERT_DIR/DOMAIN.crt CERT_DIR/DOMAIN.key
 forwardproxy
-filemanager FILES
-basicauth FILES AUTH_USER AUTH_PASS
+filemanager FILE_PATH WEB_DIRFILE_PATH {
+	no_auth
+	AUTH_USER:
+	allow_new true
+	allow_edit true
+	allow_commands true
+	allow_command cp
+}
+basicauth FILE_PATH AUTH_USER AUTH_PASS
 }
