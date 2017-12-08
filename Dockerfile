@@ -2,12 +2,14 @@ FROM    alpine:latest
 
 MAINTAINER	Adam	github.com/GEM7
 
-ENV     DOMAIN		""	
-ENV     CERT_DIR	/srv/docker/certs
-ENV	WEB_DIR		/srv/docker/caddy
-ENV	FILE_PATH	/share
-ENV	AUTH_USER	Admin
-ENV	AUTH_PATH	Administrator	
+ENV     CADDY_DL="https://caddyserver.com/download/linux/amd64?plugins=http.filemanager,http.forwardproxy&license=personal" \
+	DOMAIN="" \
+	CERT_DIR=/srv/docker/certs \
+	WEB_DIR=/srv/docker/caddy \
+	FILE_PATH=/share \
+	AUTH_USER=Admin \
+	AUTH_PATH=Administrator 
+		
 
 RUN     buildDeps="curl unzip" && \
         set -x &&\
@@ -15,8 +17,8 @@ RUN     buildDeps="curl unzip" && \
 	mkdir -p $WEB_DIR$FILE_PATH	&& \
         mkdir -p $CERT_DIR && \
         mkdir -p /tmp/caddy && \
-        apk add --no-cache curl unzip ca-certificates && \
-        curl -sl -o /tmp/caddy/caddy_linux_amd64.tar.gz "https://caddyserver.com/download/linux/amd64?plugins=http.filemanager,http.forwardproxy&license=personal" && \
+        apk add --no-cache $buildDeps ca-certificates && \
+        curl -sl -o /tmp/caddy/caddy_linux_amd64.tar.gz $CADDY_DL && \
         tar -zxf /tmp/caddy/caddy_linux_amd64.tar.gz -C /tmp/caddy && \
         mv /tmp/caddy/caddy /usr/bin/ && \
         chmod +x /usr/bin/caddy && \
