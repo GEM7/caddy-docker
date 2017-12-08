@@ -4,9 +4,6 @@ ENV     DOMAIN	""
 ENV     CERT_DIR	/srv/docker/certs
 ENV	WEB_DIR		/srv/docker/caddy
 
-ADD	CaddyFile	/etc/CaddyFile
-
-
 RUN     buildDeps="curl unzip" && \
         set -x &&\
         mkdir -p /tmp/caddy && \
@@ -23,6 +20,7 @@ RUN     buildDeps="curl unzip" && \
 VOLUME  /srv/docker/certs
 VOLUME	/srv/docker/caddy
 
+ADD	Caddyfile	/etc/CaddyFile
 ADD	index.html	$WEB_DIR/index.html
 
 EXPOSE  443
