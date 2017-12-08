@@ -27,7 +27,7 @@ ADD	index.html	$WEB_DIR/index.html
 
 EXPOSE  443
 
-ENTRYPOINT	sed -i 's#DOMAIN#$DOMAIN#g' /etc/CaddyFile && \
-		sed -i 's#CERT_DIR#$CERT_DIR#g' /etc/CaddyFile && \
-		/usr/bin/caddy
-CMD     ["-conf", "/etc/CaddyFile"]
+ENTRYPOINT	sed -i "s#DOMAIN#$DOMAIN#g" /etc/CaddyFile && \
+		sed -i "s#CERT_DIR#$CERT_DIR#g" /etc/CaddyFile && \
+		/usr/bin/caddy -conf /etc/CaddyFile
+#CMD     ["-conf", "/etc/CaddyFile"]
