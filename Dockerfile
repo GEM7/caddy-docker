@@ -12,7 +12,7 @@ RUN     buildDeps="curl unzip" && \
 	mkdir -p $WEB_DIR && \
         mkdir -p $CERT_DIR && \
         apk add --no-cache curl unzip ca-certificates && \
-        curl -sl -o /tmp/caddy/caddy_linux_amd64.tar.gz "https://caddyserver.com/download/linux/amd64?plugins=http.forwardproxy&license=personal" && \
+        curl -sl -o /tmp/caddy/caddy_linux_amd64.tar.gz "https://caddyserver.com/download/linux/amd64?plugins=http.filemanager,http.forwardproxy&license=personal" && \
         tar -zxf /tmp/caddy/caddy_linux_amd64.tar.gz -C /tmp/caddy && \
         mv /tmp/caddy/caddy /usr/bin/ && \
         chmod +x /usr/bin/caddy && \
