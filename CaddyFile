@@ -5,15 +5,15 @@ log stdout
 tls CERT_DIR/DOMAIN.crt CERT_DIR/DOMAIN.key
 forwardproxy {
 #	probe_resistance	DOMAIN
-	basicauth HTTP2_AUTH_USER	HTTP2_AUTH_PASS
+	basicauth PROXY_USER	PROXY_PASS
 }
 filemanager FILE_PATH WEB_DIRFILE_PATH {
 	no_auth
-	AUTH_USER:
+	FILE_USER:
 	allow_new true
 	allow_edit true
 	allow_commands true
 	allow_command cp
 }
-basicauth FILE_PATH AUTH_USER AUTH_PASS
+basicauth FILE_PATH FILE_USER FILE_PASS
 }
