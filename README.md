@@ -3,6 +3,13 @@ A simple easy-to-use caddy http2 proxy and filemanager!
 
 # How to use
 
+- You must get TLS certs files in advance and rename them as the listed format, if your domain name is mydomain.com, they will be like listed below.
+```
+mydomain.com.crt
+mydomain.com.key
+```
+and put them to the same place.
+
 - To be proxy alone, do:
 
 ```
