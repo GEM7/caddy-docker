@@ -23,4 +23,4 @@ The basic auth user and password for proxy will be `HTTP2proxy` and `http2PROXY`
 docker -d -e DOMAIN="YourDomain" -e PROXY_USER="user" -e PROXY_PASS="pass" -v Path_to_share:/srv/docker/caddy/share -v Path_to_certs:/srv/docker/certs -p 443:443 rpmdpkg/caddyhttp2proxy
 ```
 
-The filemanager user will be `Admin` and the password will be `Administrator` by default if not specified by adding `-e PROXY_USER="user" -e PROXY_PASS="pass"` parameter.
+The filemanager user will be `Admin` and the password will be `Administrator` by default if not specified by adding `-e PROXY_USER="user" -e PROXY_PASS="pass"` parameter. The default path of filemanager will be `/share`, you can set it by `-e FILE_PATH=/YourPath`
