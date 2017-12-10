@@ -33,16 +33,8 @@ VOLUME	$WEB_DIR$FILE_PATH
 
 ADD	CaddyFile	/etc/CaddyFile
 ADD	index.html	$WEB_DIR/index.html
+ADD	entrypoint.sh	/usr/local/bin
 
 EXPOSE  443
 
-ENTRYPOINT	sed -i "s|DOMAIN|$DOMAIN|g"			/etc/CaddyFile	&&\
-		sed -i "s|FILE_PATH|$FILE_PATH|g"		/etc/CaddyFile	&&\
-		sed -i "s|WEB_DIR|$WEB_DIR|g"			/etc/CaddyFile	&&\
-		sed -i "s|CERT_DIR|$CERT_DIR|g"			/etc/CaddyFile	&&\
-		sed -i "s|FILE_USER|$AUTH_USER|g"		/etc/CaddyFile	&&\
-		sed -i "s|FILE_PASS|$AUTH_PASS|g"		/etc/CaddyFile	&&\
-		sed -i "s|PROXY_USER|$PROXY_USER|g"		/etc/CaddyFile	&&\
-		sed -i "s|PROXY_PASS|$PROXY_PASS|g"		/etc/CaddyFile	&&\
-		/usr/bin/caddy -conf /etc/CaddyFile
-#CMD     ["-conf", "/etc/CaddyFile"]
+ENTRYPOINT	["entrypoint.sh"]
