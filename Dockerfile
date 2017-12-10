@@ -1,6 +1,6 @@
 FROM    alpine:latest
 
-MAINTAINER	Adam	github.com/GEM7
+LABEL	maintainer	Adam	github.com/GEM7/caddy-docker
 
 ENV     PATH=/usr/local/bin/:$PATH \
 	CADDY_DL="https://caddyserver.com/download/linux/amd64?plugins=http.filemanager,http.forwardproxy&license=personal" \
