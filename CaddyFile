@@ -8,7 +8,7 @@ forwardproxy {
 #	probe_resistance	{{DOMAIN}}
 	basicauth {{PROXY_USER}}	{{PROXY_PASS}}
 }
-filemanager {{FILE_PATH}} {{WEB_DIR}}/share {
+filemanager {{FILE_PATH}} /srv/docker/caddy/share {
 	no_auth
 	{{AUTH_USER}}:
 	allow_new true
