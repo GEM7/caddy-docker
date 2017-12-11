@@ -11,7 +11,9 @@ mydomain.com.key
 ```
 and put them to the same place.
 
-- To be proxy alone, do:
+# To be proxy alone:
+
+do
 
 ```
 docker -d -e DOMAIN="YourDomain"  \
@@ -26,7 +28,9 @@ docker -d -e DOMAIN="YourDomain"  \
   + Bind the certs to docker, do `Path_to_certs:/srv/docker/certs`
   + The basic auth user and password for proxy will be `HTTP2proxy` and `http2PROXY` by dedault. If you want to change them, just append a command `-e PROXY_USER="username" -e PROXY_PASS="password"` to the command listed below before  "rpmdpkg/caddy-docker"
 
-- To be filemanager, do:
+# To be filemanager alone:
+
+do
 
 ```
 docker -d -e DOMAIN="YourDomain" \
@@ -46,6 +50,8 @@ rpmdpkg/caddy-docker
   + To link the path to be share on you server to `/srv/docker/caddy/share`, do `-v Path_to_share:/srv/docker/caddy/share`
 
 - To host hour own website, add `-v pathtoyourwebdir:/srv/docker/caddy` and be sure to change the FILE_PATH to anything but "/" in advance.
+
+# To host static website
 
 - You can conbine those scripts together to use all of them at the same time, do:
 
