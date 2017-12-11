@@ -8,10 +8,10 @@ ENV     PATH=/usr/local/bin/:$PATH \
 	CERT_DIR=/srv/docker/certs \
 	WEB_DIR=/srv/docker/caddy \
 	FILE_PATH=/share \
-	FILE_USER=Admin \
-	FILE_PASS=Administrator \
 	PROXY_USER=HTTP2proxy \
-	PROXY_PASS=http2PROXY
+	PROXY_PASS=http2PROXY \
+	AUTH_USER=Admin \
+	AUTH_PASS=Administrator
 		
 
 ADD	CaddyFile	/etc/CaddyFile
@@ -40,3 +40,5 @@ VOLUME	$WEB_DIR$FILE_PATH
 EXPOSE  80	443
 
 ENTRYPOINT	["entrypoint.sh"]
+
+

@@ -8,13 +8,13 @@ forwardproxy {
 #	probe_resistance	{{DOMAIN}}
 	basicauth {{PROXY_USER}}	{{PROXY_PASS}}
 }
-filemanager {{FILE_PATH}} {{WEB_DIR}}{{FILE_PATH}} {
+filemanager {{FILE_PATH}} {{WEB_DIR}}/share {
 	no_auth
-	{{FILE_USER}}:
+	{{AUTH_USER}}:
 	allow_new true
 	allow_edit true
 	allow_commands true
 	allow_command cp
 }
-basicauth {{FILE_PATH}} {{FILE_USER}} {{FILE_PASS}}
+basicauth {{FILE_PATH}}	{{AUTH_USER}}	{{AUTH_PASS}}
 }
