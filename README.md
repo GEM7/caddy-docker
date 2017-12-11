@@ -34,7 +34,7 @@ do
 
 ```
 docker -d -e DOMAIN="YourDomain" \
--e FILE_PATH=/share \ 
+-e FILE_PATH=/ \ 
 -e FILE_USER="user" \
 -e FILE_PASS="pass" \
 -v Path_to_share:/srv/docker/caddy/share \
