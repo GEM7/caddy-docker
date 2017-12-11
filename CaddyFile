@@ -16,5 +16,5 @@ filemanager {{FILE_PATH}} {{WEB_DIR}}/share {
 	allow_commands true
 	allow_command cp
 }
-basicauth {{FILE_PATH}}	{{AUTH_USER}}	{{AUTH_PASS}}
+basicauth {{FILE_PATH}}	{{FILE_USER}}	{{FILE_PASS}}
 }

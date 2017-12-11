@@ -8,15 +8,14 @@ ENV     PATH=/usr/local/bin/:$PATH \
 	CERT_DIR=/srv/docker/certs \
 	WEB_DIR=/srv/docker/caddy \
 	FILE_PATH=/share \
+	FILE_USER=Admin \
+	FILE_PASS=Administrator \
 	PROXY_USER=HTTP2proxy \
-	PROXY_PASS=http2PROXY \
-	AUTH_USER=Admin \
-	AUTH_PASS=Administrator
-		
+	PROXY_PASS=http2PROXY 
 
 ADD	CaddyFile	/etc/CaddyFile
 ADD	index.html	$WEB_DIR/index.html
-ADD	entrypoint.sh	/usr/local/bin
+COPY	entrypoint.sh	/usr/local/bin
 
 RUN     buildDeps="curl unzip" && \
         set -x &&\
