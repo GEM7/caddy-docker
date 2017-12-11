@@ -4,6 +4,7 @@ A simple easy-to-use caddy http2 proxy and filemanager!
 # How to use
 
 - You must get TLS certs files in advance and rename them as the listed format, if your domain name is mydomain.com, they will be like listed below. You can use certbot docker for instance.
+
 ```
 mydomain.com.crt
 mydomain.com.key
@@ -20,10 +21,10 @@ docker -d -e DOMAIN="YourDomain"  \
   -p 443:443 \
   rpmdpkg/caddy-docker
 ```
-  - Bind your domain, do `-e DOMAIN="YourDomain"`
-  - Bind the certs to docker, do `Path_to_certs:/srv/docker/certs`
-  - The basic auth user and password for proxy will be `HTTP2proxy` and `http2PROXY` by dedault. If you want to change them, just append a command `-e PROXY_USER="username" -e PROXY_PASS="password"` to the command listed below before  "rpmdpkg/caddyhttp2proxy"
-  - All done
+  1. Bind your domain, do `-e DOMAIN="YourDomain"`
+  2. Bind the certs to docker, do `Path_to_certs:/srv/docker/certs`
+  3. The basic auth user and password for proxy will be `HTTP2proxy` and `http2PROXY` by dedault. If you want to change them, just append a command `-e PROXY_USER="username" -e PROXY_PASS="password"` to the command listed below before  "rpmdpkg/caddyhttp2proxy"
+  4. All done
 
 - To be filemanager, do:
 
@@ -38,12 +39,12 @@ docker -d -e DOMAIN="YourDomain" \
 rpmdpkg/caddy-docker
 ```
 
-  - Bind your domain, do `-e DOMAIN="YourDomain"`
-  - Bind the certs to docker, do `Path_to_certs:/srv/docker/certs`
-  - The filemanager user will be `Admin` and the password will be `Administrator` by default.
-  - The default path of filemanager will be `/share` if not set, you can set it by `-e FILE_PATH=/YourPath` and your address will be `yourdomain.com/Yourpath`
-  - To link the path to be share on you server to `/srv/docker/caddy/share`, do `-v Path_to_share:/srv/docker/caddy/share`
-  - All done
+  1. Bind your domain, do `-e DOMAIN="YourDomain"`
+  2. Bind the certs to docker, do `Path_to_certs:/srv/docker/certs`
+  3. The filemanager user will be `Admin` and the password will be `Administrator` by default.
+  4. The default path of filemanager will be `/share` if not set, you can set it by `-e FILE_PATH=/YourPath` and your address will be `yourdomain.com/Yourpath`
+  5. To link the path to be share on you server to `/srv/docker/caddy/share`, do `-v Path_to_share:/srv/docker/caddy/share`
+  6. All done
 
 - To host hour own website, add `-v pathtoyourwebdir:/srv/docker/caddy` and be sure to change the FILE_PATH to anything but "/" in advance.
 
