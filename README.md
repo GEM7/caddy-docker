@@ -24,8 +24,7 @@ docker -d -e DOMAIN="YourDomain"  \
 
   + Bind your domain, do `-e DOMAIN="YourDomain"`
   + Bind the certs to docker, do `Path_to_certs:/srv/docker/certs`
-  + The basic auth user and password for proxy will be `HTTP2proxy` and `http2PROXY` by dedault. If you want to change them, just append a command `-e PROXY_USER="username" -e PROXY_PASS="password"` to the command listed below before  "rpmdpkg/caddyhttp2proxy"
-  + All done
+  + The basic auth user and password for proxy will be `HTTP2proxy` and `http2PROXY` by dedault. If you want to change them, just append a command `-e PROXY_USER="username" -e PROXY_PASS="password"` to the command listed below before  "rpmdpkg/caddy-docker"
 
 - To be filemanager, do:
 
@@ -45,7 +44,6 @@ rpmdpkg/caddy-docker
   + The filemanager user will be `Admin` and the password will be `Administrator` by default.
   + The default path of filemanager will be `/share` if not set, you can set it by `-e FILE_PATH=/YourPath` and your address will be `yourdomain.com/Yourpath`
   + To link the path to be share on you server to `/srv/docker/caddy/share`, do `-v Path_to_share:/srv/docker/caddy/share`
-  + All done
 
 - To host hour own website, add `-v pathtoyourwebdir:/srv/docker/caddy` and be sure to change the FILE_PATH to anything but "/" in advance.
 
