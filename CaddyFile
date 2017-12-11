@@ -1,7 +1,6 @@
 DOMAIN:443 {
 root WEB_DIR
 gzip
-index	index.html
 log stdout
 tls CERT_DIR/DOMAIN.crt CERT_DIR/DOMAIN.key
 forwardproxy {
