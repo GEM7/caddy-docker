@@ -1,19 +1,19 @@
-DOMAIN:443 {
-root WEB_DIR
+{{DOMAIN}}:443 {
+root {{WEB_DIR}}
 gzip
 log stdout
-tls CERT_DIR/DOMAIN.crt CERT_DIR/DOMAIN.key
+tls {{CERT_DIR}}/{{DOMAIN}}.crt {{CERT_DIR}}/{{DOMAIN}}.key
 forwardproxy {
-#	probe_resistance	DOMAIN
-	basicauth PROXY_USER	PROXY_PASS
+#	probe_resistance	{{DOMAIN}}
+	basicauth {{PROXY_USER}}	{{PROXY_PASS}}
 }
-filemanager FILE_PATH WEB_DIRFILE_PATH {
+filemanager {{FILE_PATH}} {{WEB_DIR}}{{FILE_PATH}} {
 	no_auth
-	FILE_USER:
+	{{FILE_USER}}:
 	allow_new true
 	allow_edit true
 	allow_commands true
 	allow_command cp
 }
-basicauth FILE_PATH FILE_USER FILE_PASS
+basicauth {{FILE_PATH}} {{FILE_USER}} {{FILE_PASS}}
 }
