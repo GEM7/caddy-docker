@@ -15,7 +15,7 @@ ENV     PATH=/usr/local/bin/:$PATH \
 
 ADD	CaddyFile	/etc/CaddyFile
 ADD	index.html	$WEB_DIR/index.html
-COPY	entrypoint.sh	/usr/local/bin
+ADD	entrypoint.sh	/usr/local/bin
 
 RUN     buildDeps="curl unzip" && \
         set -x &&\
